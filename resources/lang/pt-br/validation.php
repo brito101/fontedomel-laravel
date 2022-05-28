@@ -221,6 +221,8 @@ return [
         'end' => 'término',
         'contract' => 'regime contratual',
         'activities' => 'atividades',
+        'cover' => 'imagem',
+        'headline' => 'texto de destaque'
     ],
 
 ];

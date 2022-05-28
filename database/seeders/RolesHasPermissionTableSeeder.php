@@ -108,6 +108,47 @@ class RolesHasPermissionTableSeeder extends Seeder
                 'permission_id' => 16,
                 'role_id' => 2
             ],
+            /** Users  de 17 to 21 (progremmer and administrator) */
+            [
+                'permission_id' => 17,
+                'role_id' => 1
+            ],
+            [
+                'permission_id' => 17,
+                'role_id' => 2
+            ],
+            [
+                'permission_id' => 18,
+                'role_id' => 1
+            ],
+            [
+                'permission_id' => 18,
+                'role_id' => 2
+            ],
+            [
+                'permission_id' => 19,
+                'role_id' => 1
+            ],
+            [
+                'permission_id' => 19,
+                'role_id' => 2
+            ],
+            [
+                'permission_id' => 20,
+                'role_id' => 1
+            ],
+            [
+                'permission_id' => 20,
+                'role_id' => 2
+            ],
+            [
+                'permission_id' => 21,
+                'role_id' => 1
+            ],
+            [
+                'permission_id' => 21,
+                'role_id' => 2
+            ],
         ]);
     }
 }

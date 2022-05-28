@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AcademicController;
 use App\Http\Controllers\Admin\ACL\PermissionController;
 use App\Http\Controllers\Admin\ACL\RoleController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +31,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
         Route::get('/users/destroy/{id}', [UserController::class, 'destroy']);
         Route::resource('users', UserController::class);
+
+        /** Products */
+        Route::get('/products/destroy/{id}', [ProductController::class, 'destroy']);
+        Route::resource('products', ProductController::class);
 
         /**
          * ACL

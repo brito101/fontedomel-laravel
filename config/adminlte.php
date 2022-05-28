@@ -48,7 +48,7 @@ return [
     */
 
     'logo' => env('APP_NAME'),
-    'logo_img' => 'vendor/adminlte/dist/img/logo.png',
+    'logo_img' => 'img/logo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -104,12 +104,12 @@ return [
     |
     */
 
-    'classes_auth_card' => 'card-outline card-primary',
+    'classes_auth_card' => 'card-outline card-warning',
     'classes_auth_header' => '',
     'classes_auth_body' => '',
     'classes_auth_footer' => '',
     'classes_auth_icon' => '',
-    'classes_auth_btn' => 'btn-flat btn-primary',
+    'classes_auth_btn' => 'btn-flat btn-warning',
 
     /*
     |--------------------------------------------------------------------------
@@ -238,6 +238,7 @@ return [
             'text' => 'Pesquisar',
         ],
         //Custom menus
+        /** Users */
         [
             'text'        => 'Usuários',
             'url'         => '#',
@@ -255,6 +256,27 @@ return [
                     'url'  => 'admin/users/create',
                     'icon' => 'fas fa-fw fa-chevron-right',
                     'can'  => 'Criar Usuários',
+                ],
+            ],
+        ],
+        /** Products */
+        [
+            'text'        => 'Produtos',
+            'url'         => '#',
+            'icon'        => 'fas fa-fw fa-box',
+            'can'         => 'Acessar Produtos',
+            'submenu' => [
+                [
+                    'text' => 'Listagem de Produtos',
+                    'url'  => 'admin/products',
+                    'icon' => 'fas fa-fw fa-chevron-right',
+                    'can'  => 'Listar Produtos',
+                ],
+                [
+                    'text' => 'Cadastro de Produtos',
+                    'url'  => 'admin/products/create',
+                    'icon' => 'fas fa-fw fa-chevron-right',
+                    'can'  => 'Criar Produtos',
                 ],
             ],
         ],
