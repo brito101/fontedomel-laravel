@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\ProductRequest;
-use App\Models\Product;
+use App\Http\Requests\Admin\RecipeRequest;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
-class ProductController extends Controller
+class RecipeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,8 +23,8 @@ class ProductController extends Controller
             abort(403, 'Acesso não autorizado');
         }
 
-        $products = Product::paginate(12);
-        return view('admin.products.index', compact('products'));
+        $recipes = Recipe::paginate(12);
+        return view('admin.recipes.index', compact('recipes'));
     }
 
     /**
@@ -34,11 +34,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        if (!Auth::user()->hasPermissionTo('Criar Produtos')) {
+        if (!Auth::user()->hasPermissionTo('Criar Receitas')) {
             abort(403, 'Acesso não autorizado');
         }
 
-        return view('admin.products.create');
+        return view('admin.recipes.create');
     }
 
     /**
@@ -47,9 +47,9 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(RecipeRequest $request)
     {
-        if (!Auth::user()->hasPermissionTo('Criar Produtos')) {
+        if (!Auth::user()->hasPermissionTo('Criar Receitas')) {
             abort(403, 'Acesso não autorizado');
         }
 
@@ -61,7 +61,7 @@ class ProductController extends Controller
             $extenstion = $request->cover->extension();
             $nameFile = "{$name}.{$extenstion}";
             $data['cover'] = $nameFile;
-            $upload = $request->cover->storeAs('products/cover', $nameFile);
+            $upload = $request->cover->storeAs('recipes/cover', $nameFile);
 
             if (!$upload) {
                 return redirect()
@@ -71,11 +71,11 @@ class ProductController extends Controller
             }
         }
 
-        $product = Product::create($data);
+        $recipe = Recipe::create($data);
 
-        if ($product->save()) {
+        if ($recipe->save()) {
             return redirect()
-                ->route('admin.products.index')
+                ->route('admin.recipes.index')
                 ->with('success', 'Cadastro realizado!');
         } else {
             return redirect()
@@ -93,17 +93,17 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        if (!Auth::user()->hasPermissionTo('Editar Produtos')) {
+        if (!Auth::user()->hasPermissionTo('Editar Receitas')) {
             abort(403, 'Acesso não autorizado');
         }
 
-        $product = Product::where('id', $id)->first();
+        $recipe = Recipe::where('id', $id)->first();
 
-        if (empty($product->id)) {
+        if (empty($recipe->id)) {
             abort(403, 'Acesso não autorizado');
         }
 
-        return view('admin.products.edit', compact('product'));
+        return view('admin.recipes.edit', compact('recipe'));
     }
 
     /**
@@ -113,17 +113,17 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, $id)
+    public function update(RecipeRequest $request, $id)
     {
-        if (!Auth::user()->hasPermissionTo('Editar Produtos')) {
+        if (!Auth::user()->hasPermissionTo('Editar Receitas')) {
             abort(403, 'Acesso não autorizado');
         }
 
         $data = $request->all();
 
-        $product = Product::where('id', $id)->first();
+        $recipe = Recipe::where('id', $id)->first();
 
-        if (empty($product->id)) {
+        if (empty($recipe->id)) {
             abort(403, 'Acesso não autorizado');
         }
 
@@ -131,7 +131,7 @@ class ProductController extends Controller
 
         if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
             $name = $data['slug'];
-            $imagePath = storage_path() . '/app/public/products/cover/' . $product->cover;
+            $imagePath = storage_path() . '/app/public/recipes/cover/' . $recipe->cover;
 
             if (File::isFile($imagePath)) {
                 unlink($imagePath);
@@ -140,7 +140,7 @@ class ProductController extends Controller
             $extenstion = $request->cover->extension();
             $nameFile = "{$name}.{$extenstion}";
             $data['cover'] = $nameFile;
-            $upload = $request->cover->storeAs('products/cover', $nameFile);
+            $upload = $request->cover->storeAs('recipes/cover', $nameFile);
 
             if (!$upload) {
                 return redirect()
@@ -150,9 +150,9 @@ class ProductController extends Controller
             }
         }
 
-        if ($product->update($data)) {
+        if ($recipe->update($data)) {
             return redirect()
-                ->route('admin.products.index')
+                ->route('admin.recipes.index')
                 ->with('success', 'Cadastro realizado!');
         } else {
             return redirect()
@@ -170,19 +170,19 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        if (!Auth::user()->hasPermissionTo('Excluir Produtos')) {
+        if (!Auth::user()->hasPermissionTo('Excluir Receitas')) {
             abort(403, 'Acesso não autorizado');
         }
 
-        $product = Product::where('id', $id)->first();
+        $recipe = Recipe::where('id', $id)->first();
 
-        if (empty($product->id)) {
+        if (empty($recipe->id)) {
             abort(403, 'Acesso não autorizado');
         }
 
-        if ($product->delete()) {
+        if ($recipe->delete()) {
             return redirect()
-                ->route('admin.products.index')
+                ->route('admin.recipes.index')
                 ->with('success', 'Exclusão realizada!');
         } else {
             return redirect()

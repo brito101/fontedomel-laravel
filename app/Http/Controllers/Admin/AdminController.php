@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
+use App\Models\Recipe;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Arr;
@@ -14,6 +16,8 @@ class AdminController extends Controller
     public function index()
     {
         $administrators = User::role('Administrador')->get()->count();
+        $products = Product::count();
+        $recipes = Recipe::count();
 
         /** Statistcs */
         $statistics = $this->accessStatistcs();
@@ -24,6 +28,8 @@ class AdminController extends Controller
 
         return view('admin.home.index', compact(
             'administrators',
+            'products',
+            'recipes',
             'onlineUsers',
             'percent',
             'access',

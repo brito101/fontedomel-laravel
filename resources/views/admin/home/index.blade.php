@@ -33,13 +33,31 @@
                         </div>
                     </div>
                 @endif
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-box"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Produtos</span>
+                            <span class="info-box-number">{{ $products }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-success elevation-1"><i class="fas fa-utensils"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Receitas</span>
+                            <span class="info-box-number">{{ $recipes }}</span>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
             @if (Auth::user()->hasRole('Programador|Administrador'))
                 <div class="row px-0">
 
-                    <div class="col-12 col-lg-6">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-header border-0">
                                 <div class="d-flex justify-content-between">

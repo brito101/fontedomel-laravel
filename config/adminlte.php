@@ -280,6 +280,27 @@ return [
                 ],
             ],
         ],
+        /** Recipes */
+        [
+            'text'        => 'Receitas',
+            'url'         => '#',
+            'icon'        => 'fas fa-fw fa-utensils',
+            'can'         => 'Acessar Receitas',
+            'submenu' => [
+                [
+                    'text' => 'Listagem de Receitas',
+                    'url'  => 'admin/recipes',
+                    'icon' => 'fas fa-fw fa-chevron-right',
+                    'can'  => 'Listar Receitas',
+                ],
+                [
+                    'text' => 'Cadastro de Receitas',
+                    'url'  => 'admin/recipes/create',
+                    'icon' => 'fas fa-fw fa-chevron-right',
+                    'can'  => 'Criar Receitas',
+                ],
+            ],
+        ],
         [
             'text'    => 'ACL',
             'icon'    => 'fas fa-fw fa-user-shield',

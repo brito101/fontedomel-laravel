@@ -108,7 +108,7 @@ class RolesHasPermissionTableSeeder extends Seeder
                 'permission_id' => 16,
                 'role_id' => 2
             ],
-            /** Users  de 17 to 21 (progremmer and administrator) */
+            /** Products  de 17 to 21 (progremmer and administrator) */
             [
                 'permission_id' => 17,
                 'role_id' => 1
@@ -147,6 +147,47 @@ class RolesHasPermissionTableSeeder extends Seeder
             ],
             [
                 'permission_id' => 21,
+                'role_id' => 2
+            ],
+            /** Recipes  de 22 to 26 (progremmer and administrator) */
+            [
+                'permission_id' => 22,
+                'role_id' => 1
+            ],
+            [
+                'permission_id' => 22,
+                'role_id' => 2
+            ],
+            [
+                'permission_id' => 23,
+                'role_id' => 1
+            ],
+            [
+                'permission_id' => 23,
+                'role_id' => 2
+            ],
+            [
+                'permission_id' => 24,
+                'role_id' => 1
+            ],
+            [
+                'permission_id' => 24,
+                'role_id' => 2
+            ],
+            [
+                'permission_id' => 25,
+                'role_id' => 1
+            ],
+            [
+                'permission_id' => 25,
+                'role_id' => 2
+            ],
+            [
+                'permission_id' => 26,
+                'role_id' => 1
+            ],
+            [
+                'permission_id' => 26,
                 'role_id' => 2
             ],
         ]);

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ACL\PermissionController;
 use App\Http\Controllers\Admin\ACL\RoleController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\RecipeController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +36,10 @@ Route::group(['middleware' => ['auth']], function () {
         /** Products */
         Route::get('/products/destroy/{id}', [ProductController::class, 'destroy']);
         Route::resource('products', ProductController::class);
+
+        /** Recipes */
+        Route::get('/recipes/destroy/{id}', [RecipeController::class, 'destroy']);
+        Route::resource('recipes', RecipeController::class);
 
         /**
          * ACL
