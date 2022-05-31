@@ -301,6 +301,27 @@ return [
                 ],
             ],
         ],
+        /** Bees */
+        [
+            'text'        => 'Abelhas',
+            'url'         => '#',
+            'icon'        => 'fas fa-fw fa-bug',
+            'can'         => 'Acessar Abelhas',
+            'submenu' => [
+                [
+                    'text' => 'Listagem de Abelhas',
+                    'url'  => 'admin/bees',
+                    'icon' => 'fas fa-fw fa-chevron-right',
+                    'can'  => 'Listar Abelhas',
+                ],
+                [
+                    'text' => 'Cadastro de Receitas',
+                    'url'  => 'admin/recipes/create',
+                    'icon' => 'fas fa-fw fa-chevron-right',
+                    'can'  => 'Criar Receitas',
+                ],
+            ],
+        ],
         [
             'text'    => 'ACL',
             'icon'    => 'fas fa-fw fa-user-shield',

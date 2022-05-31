@@ -79,8 +79,9 @@
                                     ];
                                 @endphp
                                 <x-adminlte-text-editor name="content" label="Receita" igroup-size="sm"
-                                    placeholder="Escreva aqui o texto descritivo da receita..." :config="$config" />
-
+                                    placeholder="Escreva aqui o texto descritivo da receita..." :config="$config">
+                                    {{ old('content') }}
+                                </x-adminlte-text-editor>
                             </div>
 
                             <div class="card-footer">

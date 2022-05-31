@@ -2,7 +2,7 @@
 @section('plugins.BsCustomFileInput', true)
 @section('plugins.Summernote', true)
 
-@section('title', '- Edição de Receita')
+@section('title', '- Edição de Abelha')
 
 @section('content')
 
@@ -10,13 +10,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1><i class="fas fa-fw fa-utensils"></i> Editar Receita</h1>
+                    <h1><img src="{{ asset('img/bee.png') }}" alt="" title="" /> Editar Abelha</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('admin.recipes.index') }}">Receitas</a></li>
-                        <li class="breadcrumb-item active">Editar Receita</li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.bees.index') }}">Abelhas</a></li>
+                        <li class="breadcrumb-item active">Editar Abelha</li>
                     </ol>
                 </div>
             </div>
@@ -32,36 +32,36 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Dados Cadastrais da Receita</h3>
+                            <h3 class="card-title">Dados Cadastrais da Abelha</h3>
                         </div>
 
-                        <form method="POST" action="{{ route('admin.recipes.update', ['recipe' => $recipe->id]) }}"
+                        <form method="POST" action="{{ route('admin.bees.update', ['bee' => $bee->id]) }}"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-                            <input type="hidden" value="{{ $recipe->id }}" name="id">
+                            <input type="hidden" value="{{ $bee->id }}" name="id">
                             <div class="card-body">
 
                                 <div class="d-flex flex-wrap justify-content-between">
                                     <div class="col-12 col-md-6 form-group px-0 pr-md-2">
                                         <label for="title">Título</label>
-                                        <input type="text" class="form-control" id="title" placeholder="Título da receita"
-                                            name="title" value="{{ old('title') ?? $recipe->title }}" required>
+                                        <input type="text" class="form-control" id="title"
+                                            placeholder="Título da postagem" name="title"
+                                            value="{{ old('title') ?? $bee->title }}" required>
                                     </div>
 
                                     <div class="col-12 col-md-6 form-group px-0 pl-md-2">
                                         <label for="headline">Headline</label>
                                         <input type="text" class="form-control" id="headline"
-                                            placeholder="Texto de destaque da receita" name="headline"
-                                            value="{{ old('headline') ?? $recipe->headline }}" required>
+                                            placeholder="Texto de destaque da postagem" name="headline"
+                                            value="{{ old('headline') ?? $bee->headline }}" required>
                                     </div>
                                 </div>
 
-                                @if ($recipe->cover)
+                                @if ($bee->cover)
                                     <div class="col-12 img-responsive-16by9 text-center shadow-lg mb-2">
-                                        <img src="{{ Storage::url('recipes/cover/' . $recipe->cover) }}"
-                                            class="radius" alt="" width="100%"
-                                            style="max-height: 500px; object-fit: cover">
+                                        <img src="{{ Storage::url('bees/cover/' . $bee->cover) }}" class="radius"
+                                            alt="" width="100%" style="max-height: 500px; object-fit: cover">
                                     </div>
                                 @endif
 
@@ -89,9 +89,9 @@
                                         ],
                                     ];
                                 @endphp
-                                <x-adminlte-text-editor name="content" label="Receita" igroup-size="sm"
-                                    placeholder="Escreva aqui o texto descritivo da receita..." :config="$config">
-                                    {!! old('content') ?? $recipe->content !!}
+                                <x-adminlte-text-editor name="content" label="Descrição" igroup-size="sm"
+                                    placeholder="Escreva aqui o texto descritivo da abelhas..." :config="$config">
+                                    {!! old('content') ?? $bee->content !!}
                                 </x-adminlte-text-editor>
 
                             </div>

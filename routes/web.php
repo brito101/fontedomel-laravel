@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AcademicController;
 use App\Http\Controllers\Admin\ACL\PermissionController;
 use App\Http\Controllers\Admin\ACL\RoleController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BeeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RecipeController;
 use App\Http\Controllers\Admin\UserController;
@@ -40,6 +41,10 @@ Route::group(['middleware' => ['auth']], function () {
         /** Recipes */
         Route::get('/recipes/destroy/{id}', [RecipeController::class, 'destroy']);
         Route::resource('recipes', RecipeController::class);
+
+        /** Bees */
+        Route::get('/bees/destroy/{id}', [BeeController::class, 'destroy']);
+        Route::resource('bees', BeeController::class);
 
         /**
          * ACL

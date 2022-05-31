@@ -79,7 +79,9 @@
                                     ];
                                 @endphp
                                 <x-adminlte-text-editor name="content" label="Conteúdo" igroup-size="sm"
-                                    placeholder="Escreva aqui o texto descritivo do produto..." :config="$config" />
+                                    placeholder="Escreva aqui o texto descritivo do produto..." :config="$config">
+                                    {{ old('content') }}
+                                </x-adminlte-text-editor>
 
                             </div>
 
