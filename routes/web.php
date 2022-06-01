@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\BeeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RecipeController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Site\HomeConttroller;
+use App\Http\Controllers\Site\ProductController as SiteProductController;
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -62,9 +64,8 @@ Route::group(['middleware' => ['auth']], function () {
 
 /** Web */
 /** Home */
-// Route::get('/', [SiteController::class, 'index'])->name('home');
-Route::get('/', function () {
-    return redirect('admin');
-});
+Route::get('/', [HomeConttroller::class, 'index'])->name('home');
+Route::get('/produtos', [SiteProductController::class, 'index'])->name('products');
+Route::get("/produtos/{slug}", [SiteProductController::class, 'item'])->name('product');
 
 Auth::routes();
