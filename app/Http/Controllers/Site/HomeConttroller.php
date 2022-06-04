@@ -17,7 +17,7 @@ class HomeConttroller extends Controller
         Meta::set('description', 'Aqui na Fonte do Mel você encontra produtos derivados de abelhas, tais como como mel, cera, própolis, pólen, geleia real e apitoxina. Desfrute destes benefícios!');
         Meta::set('image', asset('site/img/share.png'));
 
-        $products = Product::get()->take(3);
+        $products = Product::orderBy('created_at', 'desc')->get()->take(3);
         return view('site.home.index', compact('products'));
     }
 }

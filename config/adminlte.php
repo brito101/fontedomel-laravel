@@ -315,10 +315,10 @@ return [
                     'can'  => 'Listar Abelhas',
                 ],
                 [
-                    'text' => 'Cadastro de Receitas',
-                    'url'  => 'admin/recipes/create',
+                    'text' => 'Cadastro de Abelhas',
+                    'url'  => 'admin/bees/create',
                     'icon' => 'fas fa-fw fa-chevron-right',
-                    'can'  => 'Criar Receitas',
+                    'can'  => 'Criar Abelhas',
                 ],
             ],
         ],

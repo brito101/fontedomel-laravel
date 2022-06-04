@@ -16,7 +16,7 @@ class RecipeController extends Controller
         Meta::set('robots', 'index,follow');
         Meta::set('description', 'Receitas Maravilhosas com Mel!');
         Meta::set('image', asset('site/img/share.png'));
-        $recipes = Recipe::paginate(6);
+        $recipes = Recipe::orderBy('created_at', 'desc')->paginate(6);
         return view('site.recipes.index', compact('recipes'));
     }
 

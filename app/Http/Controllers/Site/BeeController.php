@@ -16,7 +16,7 @@ class BeeController extends Controller
         Meta::set('robots', 'index,follow');
         Meta::set('description', 'Saiba mais sobre as abelhas!');
         Meta::set('image', asset('site/img/share.png'));
-        $bees = Bee::paginate(6);
+        $bees = Bee::orderBy('created_at', 'desc')->paginate(6);
         return view('site.bees.index', compact('bees'));
     }
 

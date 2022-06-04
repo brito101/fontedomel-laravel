@@ -16,7 +16,7 @@ class ProductController extends Controller
         Meta::set('robots', 'index,follow');
         Meta::set('description', 'Confira nossos produtos!');
         Meta::set('image', asset('site/img/share.png'));
-        $products = Product::paginate(6);
+        $products = Product::orderBy('created_at', 'desc')->paginate(6);
         return view('site.products.index', compact('products'));
     }
 

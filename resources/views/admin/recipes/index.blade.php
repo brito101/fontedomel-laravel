@@ -52,7 +52,8 @@
                                             <div class="card-footer">
                                                 <div class="row d-flex flex-wrap justify-content-center">
                                                     <div class="col-12 col-md-6">
-                                                        <a href="#" class="btn btn-success w-100 m-1">Ver</a>
+                                                        <a href="{{ route('recipe', ['slug' => $recipe->slug]) }}"
+                                                            class="btn btn-success w-100 m-1" target="_blank">Ver</a>
                                                     </div>
                                                     <div class="col-12 col-md-6">
                                                         <a href="{{ route('admin.recipes.edit', ['recipe' => $recipe->id]) }}"
