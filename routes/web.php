@@ -8,8 +8,12 @@ use App\Http\Controllers\Admin\BeeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RecipeController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Site\BeeController as SiteBeeController;
+use App\Http\Controllers\Site\ContactController;
 use App\Http\Controllers\Site\HomeConttroller;
+use App\Http\Controllers\Site\PoliceController;
 use App\Http\Controllers\Site\ProductController as SiteProductController;
+use App\Http\Controllers\Site\RecipeController as SiteRecipeController;
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -65,7 +69,19 @@ Route::group(['middleware' => ['auth']], function () {
 /** Web */
 /** Home */
 Route::get('/', [HomeConttroller::class, 'index'])->name('home');
+/** Products */
 Route::get('/produtos', [SiteProductController::class, 'index'])->name('products');
 Route::get("/produtos/{slug}", [SiteProductController::class, 'item'])->name('product');
+/** Bees */
+Route::get('/abelhas', [SiteBeeController::class, 'index'])->name('bees');
+Route::get("/abelhas/{slug}", [SiteBeeController::class, 'item'])->name('bee');
+/** Recipes */
+Route::get('/receitas', [SiteRecipeController::class, 'index'])->name('recipes');
+Route::get("/receitas/{slug}", [SiteRecipeController::class, 'item'])->name('recipe');
+/** Contact */
+Route::get('/contato', [ContactController::class, 'index'])->name('contact');
+Route::post('/sendEmail', [ContactController::class, 'sendEmail'])->name('sendEmail');
+/** Police */
+Route::get('/politica-de-privacidade', [PoliceController::class, 'index'])->name('police');
 
 Auth::routes();

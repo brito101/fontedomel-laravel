@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use stdClass;
 use Meta;
 
 class ProductController extends Controller
@@ -31,7 +30,7 @@ class ProductController extends Controller
         $product->views += 1;
         $product->update();
 
-        $products = Product::whereNotIn('id', [$product->id])->get()->take(3);
+        $products = Product::whereNotIn('id', [$product->id])->inRandomOrder()->limit(3)->get();
 
         Meta::title("Fonte do Mel - {$product->title}");
         Meta::set('robots', 'index,follow');

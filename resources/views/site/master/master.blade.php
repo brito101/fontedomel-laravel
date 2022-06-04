@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('site/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('site/css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('site/boxicons/css/boxicons.min.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -36,17 +37,17 @@
                         <div class="top-header-social top-header-social-bg">
                             <ul>
                                 <li>
-                                    <a href="https://www.facebook.com/" target="_blank">
+                                    <a href="https://www.facebook.com/profile.php?id=100011897055201" target="_blank">
                                         <i class='bx bxl-facebook'></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://twitter.com/?lang=pt-BR" target="_blank">
+                                    <a href="https://twitter.com/fontedomel" target="_blank">
                                         <i class='bx bxl-twitter'></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://www.instagram.com/" target="_blank">
+                                    <a href="https://www.instagram.com/fonte.do.mel/" target="_blank">
                                         <i class='bx bxl-instagram'></i>
                                     </a>
                                 </li>
@@ -68,8 +69,6 @@
         <div class="mobile-nav">
             <a href="{{ route('home') }}" class="logo text-primary">
                 <img src="{{ asset('img/logo.png') }}" width="200" height="200" alt="{{ env('APP_NAME') }}">
-                {{-- <img src="{{ asset('img/logo.png') }}" class="logo-one" alt="{{ env('APP_NAME') }}"> --}}
-                {{-- <img src="{{ asset('img/logo.png') }}" class="logo-two" alt="{{ env('APP_NAME') }}"> --}}
             </a>
         </div>
 
@@ -79,8 +78,6 @@
                     <a class="navbar-brand" href="{{ route('home') }}">
                         <img src="{{ asset('img/logo.png') }}" width="170" height="170"
                             alt="{{ env('APP_NAME') }}">
-                        {{-- <img src="{{ asset('img/logo.png') }}" class="logo-one" alt="{{ env('APP_NAME') }}"> --}}
-                        {{-- <img src="{{ asset('img/logo.png') }}" class="logo-two" alt="{{ env('APP_NAME') }}"> --}}
                     </a>
                     <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto">
@@ -98,19 +95,22 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('bees') }}"
+                                    class="nav-link {{ Route::currentRouteName() == 'bees' || Route::currentRouteName() == 'bee' ? 'active' : '' }}">
                                     Abelhas
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('recipes') }}"
+                                    class="nav-link {{ Route::currentRouteName() == 'recipes' || Route::currentRouteName() == 'recipe' ? 'active' : '' }}">
                                     Receitas
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('contact') }}"
+                                    class="nav-link {{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">
                                     Contato
                                 </a>
                             </li>
@@ -119,7 +119,8 @@
                         <div class="nav-side d-display">
                             <div class="nav-side-item">
                                 <div class="get-btn">
-                                    <a href="#" class="default-btn btn-bg-two border-radius-5">Loja
+                                    <a href="{{ env('APP_URL') . '/vendas' }}"
+                                        class="default-btn btn-bg-two border-radius-5">Loja
                                         <i class='bx bx-chevron-right'></i></a>
                                 </div>
                             </div>
@@ -152,22 +153,18 @@
                             <div class="social-link">
                                 <ul>
                                     <li>
-                                        <a href="https://www.facebook.com/" target="_blank">
+                                        <a href="https://www.facebook.com/profile.php?id=100011897055201"
+                                            target="_blank">
                                             <i class='bx bxl-facebook'></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://twitter.com/?lang=en" target="_blank">
+                                        <a href="https://twitter.com/fontedomel" target="_blank">
                                             <i class='bx bxl-twitter'></i>
                                         </a>
                                     </li>
-                                    {{-- <li>
-                                        <a href="https://www.linkedin.com/" target="_blank">
-                                            <i class='bx bxl-linkedin-square'></i>
-                                        </a>
-                                    </li> --}}
                                     <li>
-                                        <a href="https://www.instagram.com/" target="_blank">
+                                        <a href="https://www.instagram.com/fonte.do.mel" target="_blank">
                                             <i class='bx bxl-instagram'></i>
                                         </a>
                                     </li>
@@ -175,7 +172,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-sm-6">
+                    <div class="col-lg-3 col-sm-6">
                         <div class="footer-widget pl-2">
                             <h3>Links</h3>
                             <ul class="footer-list">
@@ -192,32 +189,44 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href=" #">
+                                    <a href="{{ route('bees') }}">
                                         <i class='bx bx-chevron-right'></i>
                                         Abelhas
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ route('recipes') }}">
                                         <i class='bx bx-chevron-right'></i>
                                         Receitas
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('contact') }}">
+                                        <i class='bx bx-chevron-right'></i>
+                                        Contato
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('police') }}">
+                                        <i class='bx bx-chevron-right'></i>
+                                        Política de Privacidade
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6">
+                    <div class="col-lg-2 col-sm-6">
                         <div class="footer-widget pl-5">
                             <h3>Loja</h3>
                             <ul class="footer-list">
                                 <li>
-                                    <a href="#" target="_blank">
+                                    <a href="{{ env('APP_URL') . '/vendas' }}" target="_blank">
                                         <i class='bx bx-chevron-right'></i>
                                         Home
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" target="_blank">
+                                    <a href="{{ env('APP_URL') . '/vendas/loja' }}" target="_blank">
                                         <i class='bx bx-chevron-right'></i>
                                         Produtos
                                     </a>
@@ -232,7 +241,7 @@
                                 <li>
                                     <i class="bx bxs-map"></i>
                                     <div class="content">
-                                        <a href="#">
+                                        <a href="#" style="pointer-events: none;cursor: default;">
                                             Alameda dos Tupiniquins, nº 686, Moema, São Paulo, SP
                                         </a>
                                     </div>
