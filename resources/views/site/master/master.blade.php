@@ -1,3 +1,7 @@
+<!--
+@born June 4, 2022
+@author Rodrigo Brito <contato@rodrigobrito.dev.br>
+-->
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -273,13 +277,14 @@
                     </div>
                 </div>
             </div>
-            <div class="copy-right-area">
-                <div class="copy-right-text">
-                    <p>
-                        Copyright © 2022-{{ date('Y') }} {{ env('APP_NAME') }}. Todos os direitos reservados.
-                        <a href="https://rodrigobrito.dev.br" target="_blank">Desenvolvido por Rodrigo Brito</a>
-                    </p>
-                </div>
+
+        </div>
+        <div class="copy-right-area">
+            <div class="copy-right-text">
+                <p>
+                    {{ env('APP_NAME') }} © 2015-{{ date('Y') }} -
+                    Alameda dos Tupiniquins, 686, Moema, São Paulo, SP
+                </p>
             </div>
         </div>
     </footer>

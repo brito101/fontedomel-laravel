@@ -6422,8 +6422,10 @@ Map Area End
 }
 
 .copy-right-area {
-    padding: 15px 0;
-    border-top: 1px solid $color-2;
+    padding: 20px 0;
+    // border-top: 1px solid $color-2;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .copy-right-text {
