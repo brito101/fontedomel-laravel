@@ -54,7 +54,7 @@
                                     explorá-las convenientemente em benefício do homem. Inclui técnicas de criação de
                                     abelhas e a extração e comercialização de mel, cera, geléia real e própolis.</p>
                                 <div class="banner-btn">
-                                    <a href="#" class="default-btn btn-bg-one text-dark border-radius-5"
+                                    <a href="{{ route('bees') }}" class="default-btn btn-bg-one text-dark border-radius-5"
                                         title="Saiba Mais">Saiba Mais <i class='bx bx-chevron-right'></i></a>
                                 </div>
                             </div>
